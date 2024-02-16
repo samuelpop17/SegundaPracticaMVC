@@ -1,0 +1,33 @@
+﻿@model List<Comic>
+@{
+    List<string> nombres = ViewData["nombres"] as List<string>;
+}
+<h1>Buscador Comics</h1>
+
+<form method="post">
+    <label>Nombre</label>
+    <select name="nombre" class="form-control">
+        @foreach (string co in nombres)
+        {
+            <option value="@co"> @co</option>
+        }
+
+    </select>
+
+
+
+    <button class="btn btn-info">Buscar COMIC</button>
+</form>
+
+
+<ul>
+    @foreach (Comic co in Model)
+    {
+        <li>@co.Nombre</li>
+        <li><a asp-controller="Comics" asp-action="Details" asp-route-id="@co.Id"><img src="@co.Imagen" /></a></li>
+
+    }
+
+</ul>
+
+

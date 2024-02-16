@@ -1,0 +1,30 @@
+﻿@model List<Comic>
+
+    <h1>Lista Comics</h1>
+<a asp-controller="Comics" asp-action="Insertar">Insertar comics</a>
+<a asp-controller="Comics" asp-action="InsertarLamb">Insertar comicslamb</a>
+<table class="table-bordered">
+
+    <thead>
+
+
+    <th>Nombre</th>
+    <th>Imagen</th>
+   <th></th>
+    <th></th>
+
+    </thead>
+    <tbody>
+        @foreach (Comic co in Model)
+        {
+            <tr>
+                <td>@co.Nombre</td>
+                <td><img src="@co.Imagen" width="250px" /></td>
+                <td><a asp-controller="Comics" asp-action="Details" asp-route-id="@co.Id">Detalles</a></td>
+                <td><a asp-controller="Comics" asp-action="Delete" asp-route-id="@co.Id">Delete</a></td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
